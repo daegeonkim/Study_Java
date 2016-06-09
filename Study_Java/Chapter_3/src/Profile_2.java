@@ -28,3 +28,34 @@ public class Profile_2 {
  그래서 지원할수없는, 사용할수없는, 이런식의 메시지가 출력된것으로 추정함*/
 //  PrintStream is not applicable for the arguments (void) <<여기의 void 에서 눈치채면 될거같다
 
+
+/*
+public class Profile {
+	String name = "OOO";
+	int age = 0;
+
+	public static void main(String[] args) {
+		Profile profile=new Profile();
+		profile.setName("Min");
+		profile.setAge(20);
+		profile.printName();
+		profile.printAge();
+	}
+
+	public void setName(String str) {
+		name = str;
+	}
+	public void setAge(int value) {
+		age = value;
+	}
+	public void printName() {
+		System.out.println("My name is " + name);		
+	}
+	public void printAge() {
+		System.out.println("My age is " + age);
+		
+	}
+}
+
+객체에서 호출해야했는데 이해를 잘못했다.*/
+
