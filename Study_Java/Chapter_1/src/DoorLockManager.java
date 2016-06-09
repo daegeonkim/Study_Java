@@ -16,3 +16,11 @@ public class DoorLockManager {
  ㄴ 리턴타입, 메소드이름, 메소드 내용이 필수적으로 들어가야한다 
    **메소드 내용은 무엇인가..*/
 
+// [Dec7] 메소드내용..
+/*
+public void setPassword(String password) {
+	
+	// 어떻게 password를 set할건지에 대한 코드들
+
+}
+*/
