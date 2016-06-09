@@ -9,7 +9,9 @@ public class SmartPhone {
 	public void spped_of_internetUp(){
 		//
 	public void Bettery(){
+		
 		//
+
 	}
 	}
 
