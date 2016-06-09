@@ -16,8 +16,7 @@ public class Profile {
 		age = val;
 	}
 	public void printName(){
-		return name
-			;
+		return name;
 	}
 	public void printAge(){
 		return age;
