@@ -49,7 +49,6 @@ public class Operators {
 		System.out.println(flag); //!은boolean 값을 반대로 
 		System.out.println(!flag); //값반대로 후 출
 	}
-	.
 
 }
 
