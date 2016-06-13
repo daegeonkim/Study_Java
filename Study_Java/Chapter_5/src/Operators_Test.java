@@ -18,7 +18,11 @@ public class Operators_Test {
 		intValue1 = intValue1 & 5 ;
 		System.out.println(intValue1);
 	}
-
-	p-
-	
+	public void flagcheck(){
+		int flag1 = 1;
+		int flag2 = 2;
+		System.out.println(flag1 == flag2);
+		System.out.println(flag1 != flag2);
+		
+	}
 }
