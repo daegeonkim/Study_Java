@@ -1,12 +1,13 @@
 
 public class Calculatr_instance { // 변수 공
 	public static void main(String args[]){
-		Calculator_I_Made me = new Calculator_I_Made(); 
+//		Calculator_I_Made me = new Calculator_I_Made(); 
 		int a = 10;
 		int b = 15;
 		
-		System.out.println(me.add(1, 2));
+//		System.out.println(me.add(1, 2));
 	}
+	
 }
 
 /*
@@ -21,6 +22,7 @@ public class Calculatr_instance { // 변수 공
 ㅁ 메소드가 호출될때 생명이 시작되고, 메소드가 끝나면 소멸된다(호출이 될때 시작하지는 않지만 (??))
 
 
+
 인스턴스 변수: speed, distance, color (car class)
 ㄴ 메소드 밖에,클래스 안에 선언된 변수. 앞에는 static이라는 예약어가 없어야 한
 ㅁ 객체가 생성될때 생명이 시작되고, 그 객체를 참조하고있는 다른 객체가 없으면 소멸
@@ -32,14 +34,7 @@ public class Calculatr_instance { // 변수 공
 ㅡ 여기서 소멸이란건 어떤걸 의미하는걸까 삭제??
 
 */
-
-public class VariableYypes{
-	int instanceVairable;
-	static int classVariable;
-	public void method(int parameter){
-		int local variable;
-	}
-}
+//}
 
 
 

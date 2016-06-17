@@ -1,6 +1,6 @@
 
-public class Question {
-	byte age;
+public class CloneQuestion {
+//	byte age;
 //	String name;
 //	boolean isMarried;
 //	aa.setAge(100);
@@ -23,7 +23,7 @@ public class Question {
 //	}
 //	
 //	public static void main(String args[]){
-//		Question profile = new Question();
+//		CloneQuestion profile = new CloneQuestion();
 //		profile.setAge(25); //The method setAge(byte) in the type Question is not applicable for the arguments (int)
 //		profile.setName("Dennis");
 //		profile.setsetMarried(flase); //flase cannot be resolved to a variable

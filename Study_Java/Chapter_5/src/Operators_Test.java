@@ -4,6 +4,7 @@ public class Operators_Test {
 	public static void main (String[]args){
 		Operators_Test Test = new Operators_Test();
 		Test.compound();
+		
 
 	}		
 	public void compound(){

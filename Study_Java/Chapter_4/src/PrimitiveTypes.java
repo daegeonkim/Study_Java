@@ -47,7 +47,7 @@ public class PrimitiveTypes {
 	public void defaultValues(){
 		int intDefault2;
 		System.out.println(intDefault1);
-		System.out.println(intDefault2);
+//		System.out.println(intDefault2);
 	
 	}
 

@@ -1,5 +1,5 @@
 
-public class String_Test {
+public class String_Test { // 얘는 무슨 오류인가 ....
 	public static void main(String[]args){
 		String A="ABc";
 		System.out.println(A);

@@ -4,7 +4,7 @@ public class Operators {
 	int intValue2= 10;
 	int result;
 	
-	public static void main(String args[]){
+	public static void main(String args){
 		Operators sample = new Operators();
 		sample.casting2();
 		
@@ -68,7 +68,7 @@ public class Operators {
 	}
 	public boolean doBlindDate(int point){ // int point ??
 		boolean doBlindDateFalg =false;
-		doBlindDateFalg = (point >= 80) ? true : false;
+		doBlindDateFalg = (point >= 80) ? true : false; // 포인트라는 변수 생성후에 해당 인자가 80점 이상일경우 true
 		return doBlindDateFalg;
 	}
 	public void casting(){
