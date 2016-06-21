@@ -1,12 +1,13 @@
 package Chapter_7;
 	
 public class Array {
-	String [] month ={"a", "b"};
+	static String [] month ={"a", "b"};
 	
 	
 	public static void main(String[] args) {
 	Array aa = new Array();
-	aa.otherInit();
+	aa.arrayLength();
+	System.out.println(month);
 	
 	
 	}
@@ -68,8 +69,34 @@ public class Array {
 	 */
 	}
 
-	
-	
+	public void twoDimensionArray(){
+		int [][]twoDim;
+		twoDim =new int[2][3]; // int [][] twoDim = new int [2][3]; 과의 차이점은 뭘
+		/*twoDim = int[][]; 배열 크기를 설정안하거
+		twoDim = int[][1];  두번재 배열만 크기를 설정한경우 사용할수없다
+		*/
+		int [][]twoDim2={{1,2,3},{4,5,6}}; // 중괄호를 이용하여 한번에 선언할수도있다.
+		int [][]twoDim3= new int [2][]; // 위에서 한번 설명한 1차원배열만 설정하고 2차원은 하지않은경
+		twoDim3 [0] = new int [3]; // 이와같이 0과 1의 속하는 배열을 각각 다른 크기로 설정할수있
+		twoDim3 [1] = new int [2]; // 이경우 첫번째칸은 3줄, 둘째칸은 두줄 이런 모양의 배열이 생성된다 
+		
+		/* 다차원 배열은 새로 가로 이미지를 생각하면서 그리자
+			다차원배열은 "배열 안의 배열" 
+		*/
+	}
+	public void arrayLength(){
+		int monthLength=month.length; //2 출력됨 (a,b)
+	//   ㄴlength 기능이  int  값으로 변환해주기때문에 변수도 int 로 선언해야하는것같다.
+		int [][]twoDim ={{1,2,3},{4,5,6}};
+		int twoDimLength = twoDim.length;
+		int twoDimLength1 = twoDim[0].length;
+		int twoDimLength2 = twoDim[1].length;
+		System.out.println(twoDimLength);
+		System.out.println(twoDimLength1);
+		System.out.println(twoDimLength2);
+		System.out.println(monthLength);
+
+	}
 	
 	
 }
