@@ -5,15 +5,20 @@ public class Array {
 	
 	
 	public static void main(String[] args) {
-	Array aa = new Array();
-	aa.arrayLength();
-	System.out.println(month);
-	
-	
+		/*if(args.length>0){
+			for(String arg:args){
+				System.out.println(arg);
+			}*/
+		Array aa=new Array();
+		aa.for_new_array();
+		
+		
+/*	Array aa = new Array();
+	aa.for_new_array();
 	}
 	
 	
-	public void init(){
+/*	public void init(){
 		int [] lottonumbers = new int[7]; // 인트형의 로또넘버라는 배열 선언 후 크기 7로 초기화
 		lottonumbers[0] = 1; // 로또넘버 0 번인덱스에 1값 부여
 		lottonumbers[1] = 12;
@@ -43,6 +48,8 @@ public class Array {
 		//Char의 경우 공백이다 (/uuuu)
 	
 	}
+	
+
 	public void referenceTypes(){
 		String [] stringArray = new String [2];
 		Array [] aa =new Array [2];
@@ -69,34 +76,86 @@ public class Array {
 	 */
 	}
 
-	public void twoDimensionArray(){
+/*	public void twoDimensionArray(){
 		int [][]twoDim;
 		twoDim =new int[2][3]; // int [][] twoDim = new int [2][3]; 과의 차이점은 뭘
 		/*twoDim = int[][]; 배열 크기를 설정안하거
 		twoDim = int[][1];  두번재 배열만 크기를 설정한경우 사용할수없다
 		*/
-		int [][]twoDim2={{1,2,3},{4,5,6}}; // 중괄호를 이용하여 한번에 선언할수도있다.
-		int [][]twoDim3= new int [2][]; // 위에서 한번 설명한 1차원배열만 설정하고 2차원은 하지않은경
-		twoDim3 [0] = new int [3]; // 이와같이 0과 1의 속하는 배열을 각각 다른 크기로 설정할수있
-		twoDim3 [1] = new int [2]; // 이경우 첫번째칸은 3줄, 둘째칸은 두줄 이런 모양의 배열이 생성된다 
+	//	int [][]twoDim2={{1,2,3},{4,5,6}}; // 중괄호를 이용하여 한번에 선언할수도있다.
+	//	int [][]twoDim3= new int [2][]; // 위에서 한번 설명한 1차원배열만 설정하고 2차원은 하지않은경
+	//	twoDim3 [0] = new int [3]; // 이와같이 0과 1의 속하는 배열을 각각 다른 크기로 설정할수있
+	//	twoDim3 [1] = new int [2]; // 이경우 첫번째칸은 3줄, 둘째칸은 두줄 이런 모양의 배열이 생성된다 
 		
-		/* 다차원 배열은 새로 가로 이미지를 생각하면서 그리자
-			다차원배열은 "배열 안의 배열" 
-		*/
+	/*	다차원 배열은 새로 가로 이미지를 생각하면서 그리자
+		다차원배열은 "배열 안의 배열" 
+		
 	}
+	
+	*/
 	public void arrayLength(){
 		int monthLength=month.length; //2 출력됨 (a,b)
 	//   ㄴlength 기능이  int  값으로 변환해주기때문에 변수도 int 로 선언해야하는것같다.
 		int [][]twoDim ={{1,2,3},{4,5,6}};
-		int twoDimLength = twoDim.length;
-		int twoDimLength1 = twoDim[0].length;
-		int twoDimLength2 = twoDim[1].length;
+		int twoDimLength = twoDim.length; // 2차원 배열에 크기는 2. (1차원 , 2차원 두덩이)
+		int twoDimLength1 = twoDim[0].length;// 1차원 배열 내에 값이 3개임으로 3
+		int twoDimLength2 = twoDim[1].length; // 마찬가지 
+		System.out.println(monthLength);
 		System.out.println(twoDimLength);
 		System.out.println(twoDimLength1);
 		System.out.println(twoDimLength2);
-		System.out.println(monthLength);
-
+	//int twoDimTestLength = two dim [0][0].length >> 값이 들어있는 공간이기때문ㅇ ㅔ사할수없다 
+		
+		for(int loop1 = 0; loop1<2;loop1++){ // 이해할수가없다 
+			for(int loop2 = 0; loop2<3; loop2++){// 1차 
+				System.out.println("twoDim["+loop1+"]["+loop2+"]="+twoDim[loop1][loop2]); //2차
+			/* 0,0 0,1 0,2 0,3
+			 * 1,0 1,1 1,2 1,3 
+			 */
+			}
+		}
 	}
 	
+	
+	public void arrayPrintTest(){//1차원인 경우 인덱스값 = loop 값 해서 출력하는건 알겠는데 2차원인경우는 ..
+		int [] test = {1,2,3,4,5}; 
+		System.out.print("Test Array has");
+		for(int loop=0 ; loop<5 ; loop++){
+			System.out.print(test[loop]+" , ");
+		}
+	}
+	
+	
+	public void arrayTest2(){
+		for(int loop1=0; loop1<month.length;loop1++){
+			System.out.println(month[loop1]); // 이렇게 length  기능을 이용하여 출력도 가능하다(엄청 길거나 얼마나 긴지 모를때 사용하면 꿀일듯) 
+		}
+	}
+	
+	public void second_Array_Test(){
+		int [][] test = {{1,2,3},{4,5,6}};
+		for(int loop1 = 0;loop1<test.length;loop1++){
+			for(int loop2= 0; loop2<test[loop1].length;loop2++){ // 이부분에 loop1 부분이 이해가 안된다. 이경에도 결국은 2<2 기때문에 더 적게나와야하는거 아닌가 ..
+				System.out.println(test[loop1][loop2]);
+				//그냥 테스트의 길이를 적었을때는 5까지밖에 출력이 안되는데 왜그런걸까  
+				// loop<2 면 Fasle 라서 안됨 .			
+			}
+		}
+	}
+	public void for_new_array(){
+		int [][] array_2 = {{1,2,3},{4,5,6}};
+		
+		int count1 =0;
+		for(int [] imarray2:array_2){
+			int count2=0;
+			for(int bb:imarray2){
+				System.out.println(imarray2);
+				System.out.println("twoDim["+count1+"]["+count2+"]="+bb);
+				count2++;	
+			}
+			count1++;
+		}
+		
+	}
 	
 }
