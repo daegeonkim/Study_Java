@@ -16,7 +16,8 @@ public class ReferenceTypes {
 		//reference.method_End_Test();
 		//Member_DTO.staticMethod();
 		//reference.chechMemberDTOName();
-		reference.makeStaticBlockObject();
+		//reference.callPassByValue();
+		reference.calculateNumbers(1,2,3,4,5);
 		
 		
 	}
@@ -92,10 +93,38 @@ public class ReferenceTypes {
 	
 	}
 
-
-
-
-
-
-
+	public void callPassByValue(){
+		int a =10;
+		String b ="b";
+		Member_DTO member = new Member_DTO("Sangmin");
+		passByValue(a,b,member); // << 메소드안에서 메소드를 부른거아닌가..? 다른 의미가 또있나 ..
+		System.out.println("callpassbyValuye method result !!");
+		// callpassbyValue 에서 선언한 a,b member 값을 전달했으나 원래값(메소드안에서 선언하는값)을 출력하는데 의미가있는건가 ??
+		System.out.println("a="+a);
+		System.out.println("b="+b);
+		System.out.println("member.name="+member.name);
+	}
+	
+	
+	public void passByValue(int a, String b, Member_DTO member){
+		a= 20;
+		b= "z";
+		//member =new Member_DTO("Singchoon");
+		member.name = "Sungchoon"; // pass by reference 
+									//참조자료형안에있는 객체를 변경하면 메소드에서 변경한대로 따라서 바뀐다 (값이아니라 객체에 대한참조가 넘어감(?))
+		System.out.println("passByValye method result !!!");
+		System.out.println("a="+a);
+		System.out.println("b="+b);
+		System.out.println("member.name="+member.name);
+	}
+	public void calculateNumbers(int... numbers){
+		int total =0;
+		for(int number:numbers){ //??????
+			total+=number;
+		}
+		System.out.println("Total="+total);
+	}
 }
+
+
+
