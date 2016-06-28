@@ -17,7 +17,10 @@ public class ReferenceTypes {
 		//Member_DTO.staticMethod();
 		//reference.chechMemberDTOName();
 		//reference.callPassByValue();
-		reference.calculateNumbers(1,2,3,4,5);
+	//	reference.calculateNumbers(1,2,3,4,5);
+		StaticBlock test = new StaticBlock();
+		System.out.println(test);
+		System.out.println(test.data);
 		
 		
 	}
