@@ -3,8 +3,11 @@ package Book;
 public class InheritanceObject {
 	public static void main(String[] args) {
 		InheritanceObject test =new InheritanceObject();
-		test.toStringMethod2();
-		
+		test.toStringMethod(test);
+		System.out.println("------------------");
+		System.out.println(test.DtoName()); // toString 을 오버라이딩하지않으면 그냥 해쉬값이나온
+		System.out.println("-------------------");
+		test.equalMethod();
 	}
 	
 	public void toStringMethod(InheritanceObject obj){
@@ -30,8 +33,40 @@ public class InheritanceObject {
 											// 주로 DTO를 사용할때 해야한다고한다
 	}
 	
-	
+	public Member_DTO DtoName(){
+		Member_DTO dto = new Member_DTO("Snagmin", "010123", "123@asd");
+		/*위 내용출력 원할경우
+		 * Sysout("name= "+dto.name ...) 이렇게입력해야만 한다 허
+		 하지만 아래에 DTO에 toString 을 오버라이딩 이용할경
+		
+		public String toString(){
+		return "Name= "+name+" Phone= "+number+" eMail= "+email;
+ 		*/
+ 		return dto;
+		// toString 을 오버라이딩하지않으면 그냥 해쉬값이나온
+		
+	}
+
+	public void equalMethod(){
+		Member_DTO obj1 = new Member_DTO("Dennis");
+		Member_DTO obj2 = new Member_DTO("Dennis");
+/*		if(obj1==obj2){ // 이렇게할경우 주소값을 비교하기때문에 다르다고나온다(equal 메소드를 사용해야한다)(오버라이딩을 먼저해놔야한_)
+			System.out.println("Same one");
+		}else{
+			System.out.println("Different one");
+		}
+	}*/
+		if(obj1.equals(obj2)){
+			System.out.println("same one");
+		} else{
+			System.out.println("Different");
+		}
+	}
+	 
 	
 	
 	
 }
+		
+		
+		
