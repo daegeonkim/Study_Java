@@ -36,6 +36,6 @@ public class ManageStudent {
 		} else{
 			System.out.println("Different");
 		}
-	}
+	} 
 	
 }
