@@ -1,17 +1,26 @@
 package Book;
 
-import jdk.nashorn.internal.ir.CatchNode;
-
 public class ExceptionSample {
 	public ExceptionSample(){
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args){ //throws Exception{ try-catch 대신 이렇게 사용할수도 있지만좋지않다고 한다.
+		
 		ExceptionSample sample = new ExceptionSample();
 		//sample.arrayOutOfBound();
 		//sample.finallySample();
-		sample.multiCatch();
+		//sample.multiCatch();
+		//sample.ExceptionSample();
+		//sample.throwException2(10); // throws문을 사용한경우 메소드를 호출하는 부분에서 반드시 아래처럼 try-catch 로 묶어줘야한다.
+		try{
+			sample.throwException3(13);
+		}catch (MyException e){
+			e.printStackTrace();
+		}
+	
 	}	
+	
+
 	public void arrayOutOfBound(){
 		int [] intArray = null;
 		//int [] intArray = new int [5];
@@ -62,4 +71,51 @@ public class ExceptionSample {
 		//	System.out.println("ArrayIndexOutofBoundsException is occured");	
 		//}	
 	}
+
+	public void ExceptionSample(){
+		int [] intArray = new int [5];
+		try{
+			//intArray = null;
+			System.out.println(intArray[5]);
+		}catch (Throwable t){
+			//System.out.println(t.getMessage()); //null 출력, 예외 이유가 null 이기때문에 null 만 출력된
+			//System.out.println(t.toString()); // 어떤예외가 발생했는지도 출력되기떄문에 nullpointexception 이라는 내용이 출력된다
+			t.printStackTrace(); // 클래스, 메소드, 메소드영향 등 더 자세히 나온	
+		}
+	}
+
+	
+	public void throwException(int number){
+		try{
+			if(number > 12){
+				throw new Exception("Number is over than 12");
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void throwException2(int number) throws Exception{
+			if(number > 12){
+				throw new Exception("Number is over than 12");
+			}
+		
+	}
+	
+	
+	public void throwException3(int number) throws MyException{
+		try{
+			if(number > 12);
+			throw new MyException("number is over 12");
+		}catch (MyException e){
+			e.printStackTrace();
+		}
+	
 }
+
+}
+
+
+
+
