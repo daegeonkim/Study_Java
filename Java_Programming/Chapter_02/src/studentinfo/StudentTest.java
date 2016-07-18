@@ -1,5 +1,8 @@
 package studentinfo;
-public class StudentTest extends junit.framework.TestCase {
+
+import junit.framework.TestCase;
+
+public class StudentTest extends TestCase {
 
 	public void testCreate() {
 		final String firstStudentName = "ABC"; // 문자열을 그대로 사용했을 경우 의미파악이나 수정이 어려울수있기때문에 상수로 교
