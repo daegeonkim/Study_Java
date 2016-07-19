@@ -17,6 +17,9 @@ public class Board {
 	int getNumberofPawns(){
 		return pawns.size();
 	}
+	
+	char test  = 'a';
+	
 }
 
 

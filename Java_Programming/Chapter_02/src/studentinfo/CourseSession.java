@@ -6,10 +6,11 @@ class CourseSession {
 	private String department;
 	private String number;
 	private Date startDate;
-	//private int numberOfStudents; 
-		//인수화된 형의 객체에서(배열인거같다) 사이즈를 체크할수있음으로 이 필드는 더이상 필요없다.
 	private ArrayList<Student> students = new java.util.ArrayList<Student> (); //???
 	
+	static final String NEWLINE= System.getProperty("line.separator");
+	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE+"-" + NEWLINE;
+	static final String ROSTER_REPORT_FOOTER = NEWLINE+"# Students";
 	
 	CourseSession(String department, String number, Date startDate){
 		this.department = department;
@@ -33,13 +34,12 @@ class CourseSession {
 		students.add(student);
 	}
 	
-	java.util.ArrayList<Student> getAllStudents(){
+	ArrayList<Student> getAllStudents(){
 		return students;//??
 		
 	}
 
 	Student get(int index) {
-
 		return students.get(index); 
 		//Array <  > 생성자를 만들어 enroll 메소드로 여기 필드값 students 에 값을 추가하고
 		// getAllStudents 로 리턴을받아 출력했으나, Coursesession 으로 객체를 만들면 어차피 초기화되는부분이라 없애고 해당 메소드를 만드는거같다
@@ -51,12 +51,8 @@ class CourseSession {
 	Date getEndDate(){
 		GregorianCalendar calendar = new GregorianCalendar();
 		calendar.setTime(startDate);
-		System.out.println(calendar.getTime());
-		System.out.println(calendar.DAY_OF_YEAR);
 		int numberOfDays= 16*7-3; //강의의 마지막날이 16주차의 금요일이기때문에 3일을 뺀다 
 		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays); //DAY_OF_YEAR는 import Calendar 클래스의 상수 
-		System.out.println("---------------");
-		System.out.println(calendar.DAY_OF_YEAR);
 		
 		return calendar.getTime();
 	}
@@ -65,7 +61,5 @@ class CourseSession {
 	
 		return startDate;
 	}
-
-	
 }
 

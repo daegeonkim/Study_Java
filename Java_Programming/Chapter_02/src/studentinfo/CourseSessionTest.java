@@ -12,27 +12,13 @@ public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보
 	// number :  과목번
 	private CourseSession session;
 	private Date startDate;
+
 	
 	public void setUp(){
-		startDate = createDate(2003, 1, 6);
+		startDate = new DateUtil().createDate(2003, 1, 6);
 		session = new CourseSession("ENGL", "101", startDate);
-	}
-	Date createDate(int year, int month, int date){ // Calendar 객체 생성시 더 편하게 작성할수있도록해
-		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.clear();
-		calendar.set(calendar.YEAR, year);
-		calendar.set(calendar.MONTH, month-1);
-		calendar.set(calendar.DAY_OF_MONTH, date);
-		return calendar.getTime();
-		
-		
-		//ㄴ Calendar 1900, 0부터 시작하는등 가시적으로 좀더 편하게 작성할수있도록 리턴함
-		// 그런데 얘가 사용되려면 메소드를 먼저 한번 사용해야하는거아닌가 ..?
-		// ㄴ startDate = 에 할당하면된다!
 		
 	}
-
-
 	
 	public void testCreate(){
 		assertEquals("ENGL", session.getDepartment());
@@ -71,10 +57,10 @@ public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보
 	public void testCourseDates(){
 		CourseSession session = new CourseSession("ABCD", "200", startDate);
 		
-		Date sixteenWeeksOut = createDate(2003,4,25);
+		Date sixteenWeeksOut = new DateUtil().createDate(2003,4,25); //인스턴스화 하지 않은 객체를 일시적으로 만들어필요할때마다 참조시킴 
 		assertEquals(sixteenWeeksOut, session.getEndDate());
 		
-		
-		
-	}
-}	
+		}
+}
+	
+	
