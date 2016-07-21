@@ -8,15 +8,15 @@ public class RosterReportTest extends TestCase {
 	public void testRosterReport(){
 		CourseSession session = new CourseSession("ENG", "101", createDate(2003, 1, 6));
 	
-		Student studentA =new Student("A");
-		Student studentB =new Student("B");
-		session.enroll(studentA);
-		session.enroll(studentB);
-		String rosterReporter = new RosterReporter(session).getReport();
+		session.enroll(new Student("A"));
+		session.enroll(new Student("B"));
 		
+		String rosterReport = new RosterReporter(session).getReport();
+		
+		System.out.println(rosterReport);
 		assertEquals(RosterReporter.ROSTER_REPORT_HEADER+"A"+RosterReporter.NEWLINE+"B"+
 				RosterReporter.NEWLINE+RosterReporter.ROSTER_REPORT_FOOTER+"2"+RosterReporter.NEWLINE,
-					rosterReporter);
+					rosterReport);
 	}
 
 	
