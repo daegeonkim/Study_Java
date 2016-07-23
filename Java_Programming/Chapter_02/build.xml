@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Chapter_02">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="JUnit 3.libraryclasspath">
+        <pathelement location="../../../../Apps/Eclipse.app/Contents/Eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+    </path>
+    <path id="Chapter_02.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 3.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="CourseSessionTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="sis.studentinfo.CourseSessionTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="CourseSessionTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="z.Junk.CourseSessionTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="CourseSessionTest.testRosterReport">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="sis.studentinfo.CourseSessionTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="DateUtilTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="sis.studentinfo.DateUtilTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="PawnTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="Question.PawnTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="RosterReportTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="sis.report.RosterReportTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="StudentTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="sis.studentinfo.StudentTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="StudentTest.testCreate">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="sis.studentinfo.StudentTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="WordTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="Other.WordTest" todir="${junit.output.dir}"/>
+            <classpath refid="Chapter_02.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
