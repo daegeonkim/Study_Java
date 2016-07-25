@@ -2,16 +2,17 @@ package sis.report;
 
 import java.util.*;
 import sis.studentinfo.*;
+import static sis.report.ReportConstant.NEWLINE;
 
 
 public class RosterReporter {
-	static final String NEWLINE = System.getProperty("Line.separator");
 	static final String ROSTER_REPORT_HEADER = "Student"+NEWLINE+"-"+NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE +"# Studnet";
 
 	
 	
 	private CourseSession session; //여기서 객체를 생성하고  //private인 이유는 뭘까
+	
 	
 	RosterReporter(CourseSession session){ // test 클래스에서 인스턴스화 할
 		this.session= session; // 이게 뭐하는걸까 ..
@@ -36,8 +37,7 @@ public class RosterReporter {
 		}
 	}
 	void writeFooter(StringBuilder buffer){
-		buffer.append(ROSTER_REPORT_FOOTER+session.getAllStudents().size()+NEWLINE);
-		
-		
+		buffer.append(ROSTER_REPORT_FOOTER+session.getAllStudents().size()+NEWLINE);		
 	}
+	
 }

@@ -1,10 +1,7 @@
 package sis.studentinfo;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import junit.framework.TestCase;
-import sun.util.calendar.Gregorian;
-
 
 
 public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보와 수강정보를 관리하기 위해생
@@ -12,12 +9,14 @@ public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보
 	// number :  과목번
 	private CourseSession session;
 	private Date startDate;
-
+	private static final int CREDITS =3; // 왜 3일까 
 	
 	public void setUp(){
-		startDate = new DateUtil().createDate(2003, 1, 6);
-		session = new CourseSession("ENGL", "101", startDate);
+		startDate = DateUtil.createDate(2003, 1, 6);
+		session = createCourseSession();
 		
+		
+
 	}
 	
 	public void testCreate(){
@@ -32,6 +31,7 @@ public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보
 		
 		Student student1 = new Student("Dennis");
 		session.enroll(student1); // 학생을 참여시키는거인
+		assertEquals(CREDITS, student1.getCredits());
 		assertEquals(1, session.getNumberOfStudents());// 참여후 해당 학과에 몇명이 참여중인지 확인
 		
 		// 아래부터 원하는 학생이 있는지 확인하기 위한 코드 
@@ -46,6 +46,7 @@ public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보
 		
 		Student student2 = new Student("Kim");
 		session.enroll(student2);
+		assertEquals(CREDITS, student2.getCredits());
 		assertEquals(2, session.getNumberOfStudents());
 		// 아래부터 원하는 학생이 있는지 확인하기 위한 코드 
 		//assertEquals(2, allStudents.size());
@@ -57,10 +58,28 @@ public class CourseSessionTest extends TestCase{ //강의의 기본 과목정보
 	public void testCourseDates(){// 과목, 번호, 시작 날짜객체에 종강날짜를 계산하는 메소드가 정상 실행되는지 확인하는 메소
 		CourseSession session = new CourseSession("ABCD", "200", startDate);
 		
-		Date sixteenWeeksOut = new DateUtil().createDate(2003,4,25); //인스턴스화 하지 않은 객체를 일시적으로 만들어필요할때마다 참조시킴 
+		Date sixteenWeeksOut = DateUtil.createDate(2003,4,25); //인스턴스화 하지 않은 객체를 일시적으로 만들어필요할때마다 참조시킴 
 		assertEquals(sixteenWeeksOut, session.getEndDate());
 		
-		}
+	}
+
+	public void testCount(){
+		CourseSession.resetCount(); //다른곳에서도 객체가 생성될때마다 클래스변수 +1 되기때문에 이 테스트를 하기위해실행전 0으로 초기화한다 
+		createCourseSession();
+		assertEquals(1, CourseSession.getCount());
+		createCourseSession();
+		assertEquals(2, CourseSession.getCount());
+
+	}
+	private CourseSession createCourseSession(){
+		CourseSession session =  CourseSession.create("ENGL", "101", startDate);
+		session.setNumberOfCredit(CourseSessionTest.CREDITS);
+		return session;
+		
+	}
+	
+	
+
 }
 	
 	

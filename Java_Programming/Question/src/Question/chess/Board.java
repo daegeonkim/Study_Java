@@ -1,6 +1,8 @@
 package Question.chess;
 import java.util.*;
 
+import com.sun.media.jfxmedia.events.NewFrameEvent;
+
 import Question.pieces.Pawn;
 import pieces.*;
 
@@ -8,6 +10,12 @@ import pieces.*;
 public class Board {
 	public ArrayList<Pawn> pawns = new java.util.ArrayList<Pawn> (); 	
 	static final String NEWLINE = System.getProperty("line.separator");
+	final static String WHITE = "White";
+	final static String BLACK = "Black";
+	final static int PAWN_AMOUNT = 7;
+	final static int BOARD_ROW = 8;
+	final static int BOARD_COL = 8;
+
 	
 	
 	public Board(){
@@ -29,47 +37,26 @@ public class Board {
 
 	void initialize(){
 		
-		ArrayList<Pawn> whiteLine = new ArrayList<Pawn>();
-		ArrayList<Pawn> blackLine = new ArrayList<Pawn>();
+		Pawn whitePawn = new Pawn(WHITE);
+		Pawn blackPawn = new Pawn(BLACK);
 		
+		StringBuilder lines = new StringBuilder(); // 체스판 출력하는 라인
 		
-		Pawn whitePawn = new Pawn();
-		Pawn blackPawn = new Pawn("Black");
-		
-		StringBuilder lines = new StringBuilder();
-		
-		lines.append(NEWLINE);
-		
-		whiteLine.add(whitePawn);
-		whiteLine.add(whitePawn);
-		whiteLine.add(whitePawn);
-		whiteLine.add(whitePawn);
-		whiteLine.add(whitePawn);
-		whiteLine.add(whitePawn);
-		whiteLine.add(whitePawn);
-		
-		for(Pawn aa :whiteLine){
-			lines.append(aa.getMark());	
+		for(int whole = 0 ;whole < 9; whole++){
+			lines.append(NEWLINE);
 		}
-		lines.append(NEWLINE);
-		lines.append(NEWLINE);
-		lines.append(NEWLINE);
-		lines.append(NEWLINE);
-		lines.append(NEWLINE);
-		lines.append(NEWLINE);
 		
+
 		
-		blackLine.add(blackPawn);
-		blackLine.add(blackPawn);
-		blackLine.add(blackPawn);
-		blackLine.add(blackPawn);
-		blackLine.add(blackPawn);
-		blackLine.add(blackPawn);
-		blackLine.add(blackPawn);
-		
-		for(Pawn bb :blackLine){
-			lines.append(bb.getMark());	
+		for(int blank = 0; blank<5; blank++){
+			lines.append(NEWLINE);
 		}
+		
+		
+		for(int black = 0 ; black <= PAWN_AMOUNT ; black ++){
+			lines.append(blackPawn.getMark());
+		}
+		
 		System.out.println(lines);
 	}
 }

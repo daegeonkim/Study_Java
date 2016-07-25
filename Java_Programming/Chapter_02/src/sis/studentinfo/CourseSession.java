@@ -8,21 +8,29 @@ public class CourseSession {
 	private Date startDate;
 	private ArrayList<Student> students = new java.util.ArrayList<Student> (); //???
 	
+	private static int count=0;
+	private int numberOfCredits; // test.CREDIT 으로 부터 Student 로 가는 학점 
+	
+	
 	static final String NEWLINE= System.getProperty("line.separator");
 	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE+"-" + NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE+"# Students";
 	
+	public CourseSession(){
+		
+	}
 	public CourseSession(String department, String number, Date startDate){
 		this.department = department;
 		this.number = number;
 		this.startDate = startDate;
+		
 	}
 
-	String getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
-	String getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
@@ -31,7 +39,8 @@ public class CourseSession {
 	}
 	
 	public void enroll(Student student){ //매개변수로 생성된 학생을 받고 생성될때마
-		students.add(student);
+		student.addCredits(numberOfCredits); // 테스터로 부터 온 Credit 을 학생의 credit 으로 설정해
+		students.add(student); 	//학생의 총 학점 등등 확인할때 사용할듯 .
 	}
 	
 	public ArrayList<Student> getAllStudents(){
@@ -58,8 +67,30 @@ public class CourseSession {
 	}
 
 	Date getStartDate() {
-	
 		return startDate;
 	}
+	
+	static int getCount(){ // 아래와같
+		return count;	
+	}
+	
+	static int resetCount(){ // 클래스변수 Count 를 private로 캡슐화 하면서 테스트메소드에서 직접적으로 0으로 초기화할수없어 메소드를 만듬.
+		return count=0;
+	}
+	static int incrementCount(){ //객체가 생성될때마다 증가된 count 를 반환한다.
+		return ++count; 
+	}
+	
+	public static CourseSession create(String department, String number, Date startDate){
+		incrementCount(); // 스태틱 코드 내에서 스태틱변수에 대한 증감을 처리하는것이 훨씬 좋아보인다고한다.
+		return new CourseSession(department, number, startDate);
+		
+	}
+	
+	void setNumberOfCredit(int numberOfCredits) { //test로부터 받은 크레딧을 student 객체로 가는 NumberOfCredit으로 설
+		this.numberOfCredits = numberOfCredits;
+	}
+	
+	
 }
 
