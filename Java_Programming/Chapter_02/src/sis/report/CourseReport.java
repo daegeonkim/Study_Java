@@ -30,12 +30,14 @@ public class CourseReport {
 		
 		StringBuilder builder = new StringBuilder();  // 빌더를 만들
 		for (CourseSession session :sessions){ // 빌더에 위에 배열리스트에 추가한 과목들을 for으로 학과명, 번호를 빌더에 추가하
+			
 			builder.append(session.getDepartment()+" "+session.getNumber()+NEWLINE);
 		}
+	
 		System.out.println(builder.toString());
-
 		return builder.toString(); //  String 형으로 내보냄
-		
-		
+
 	}
+	
+	
 }

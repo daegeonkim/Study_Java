@@ -1,22 +1,24 @@
 package sis.studentinfo;
 
-public class Student { //다른 패키지에서 import 해서 참조할수있도록  public 으로 접근제어자를 변경한다.
-	
+import java.util.ArrayList;
 
+import sis.studentinfo.Student.GRADE;
+
+public class Student { //다른 패키지에서 import 해서 참조할수있도록  public 으로 접근제어자를 변경한다.
 	private String	name;
 	private int credits;
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
 	
 	static final String IN_STATE = "CO"; // 지역 관
 	private String state="";
-	public boolean isInState;
+	public boolean isInState; // 지역관
+	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관
+	enum GRADE {A, B, C, D, F};
+	private boolean isHonors = false; // 전공학과 설정 용도 
+	
 	void setState(String state){
 		this.state = state; // 지역관련 
 	}
-	
-	
-	
-	
 	
 	
 	public Student(String name) {
@@ -28,6 +30,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	public String getName(){
 		return name;
 	}
+	
 	boolean isFullTime(){
 		return credits >=CREDITS_REQUIRED_FOR_FULL_TIME;
 	}
@@ -44,5 +47,64 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		return state.equals(Student.IN_STATE);
 	}
 	
+	void addGrade(GRADE grade){
+		//grades = new ArrayList<String>(); 계속 배열에 저장되기때문에 test 메소드에서 각 등급별로 점수확인하는거면
+					// 메소드 호출할때마다 초기화되야하는거 아닌가 ???
+		
+		grades.add(grade);
+	}
+
+	double getGpa(){
+		if(grades.isEmpty())
+			return 0.0;
+		double total = 0.0;
+		for(GRADE grade:grades){
+			total += gradePointsFor(grade);
+		}
+		return total;
+	}
+	int gradePointsFor(GRADE grade){
+		if (isSenatorsSon){
+			if(grade == GRADE.A) return 4;
+			if (grade == GRADE.B) return 4;
+			if (grade == GRADE.C) return 4;
+			if (grade == GRADE.D) return 4;
+			return 3;
+
+		}
+		
+		int points = basicGradePointsFor(grade);
+		if (isHonors){
+			if (points > 0){
+				points += 1;
+			}
+		}
+		return 0; //그 외의경우 0 리턴	
+	}
+	
+	private int basicGradePointsFor(GRADE grade){
+		if(grade == GRADE.A) return 4;
+		if (grade == GRADE.B) return 3;
+		if (grade == GRADE.C) return 2;
+		if (grade == GRADE.D) return 1;
+		return 0;
+	}
+	
+	void setHonors(){
+		isHonors = true;
+	}
+	
+	private GradingStrategy gradingStrategy = new RegularGradingStrategy(); // 객체를 생성했을때는 일반학생으로 초기화(?)
+	
+	void setGradingStrategy (GradingStrategy gradingStrategy){ // 인터페이스를 인수로 받는경우는 구현하는클래스 받는다는 의미인듯.
+		this.gradingStrategy = gradingStrategy;
+	}
+	
+	int gradePointsFor(GRADE grade){
+		return gradingStrategy.getGradePointsFor(grade);
+			
+	}
+	
+
 
 }

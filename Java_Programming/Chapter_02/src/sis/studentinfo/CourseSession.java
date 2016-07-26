@@ -2,7 +2,8 @@ package sis.studentinfo;
 import java.util.*;
 
 
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession>{
+	
 	private String department;
 	private String number;
 	private Date startDate;
@@ -89,6 +90,15 @@ public class CourseSession {
 	
 	void setNumberOfCredit(int numberOfCredits) { //test로부터 받은 크레딧을 student 객체로 가는 NumberOfCredit으로 설
 		this.numberOfCredits = numberOfCredits;
+	}
+	
+	@Override
+	public int compareTo(CourseSession that) {
+		int compare = this.getDepartment().compareTo(that.getDepartment()); //  과 이름으로 먼저 확인흘하
+		if(compare == 0){ // 서로 강의 과목이 같은강요 
+			compare = this.getNumber().compareTo(that.getNumber()); // getNumber 을 통해 가져온강의 번호순으로 나열한
+		}
+		return compare;
 	}
 	
 	

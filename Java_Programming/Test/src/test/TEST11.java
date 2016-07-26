@@ -19,4 +19,8 @@ public class TEST11{// extends TestCase {
 	public void test(){
 		System.out.println("22");
 	}
+	
+	public void testMethod2(){
+		TEST22.methodTest();
+	}
 }
