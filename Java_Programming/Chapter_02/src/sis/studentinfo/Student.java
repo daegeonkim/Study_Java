@@ -13,8 +13,8 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	private String state="";
 	public boolean isInState; // 지역관
 	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관
-	enum GRADE {A, B, C, D, F};
-	private boolean isHonors = false; // 전공학과 설정 용도 
+	public enum GRADE {A, B, C, D, F};
+	 
 	
 	void setState(String state){
 		this.state = state; // 지역관련 
@@ -48,7 +48,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	}
 	
 	void addGrade(GRADE grade){
-		//grades = new ArrayList<String>(); 계속 배열에 저장되기때문에 test 메소드에서 각 등급별로 점수확인하는거면
+		grades = new ArrayList<GRADE>(); //계속 배열에 저장되기때문에 test 메소드에서 각 등급별로 점수확인하는거면
 					// 메소드 호출할때마다 초기화되야하는거 아닌가 ???
 		
 		grades.add(grade);
@@ -59,11 +59,11 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 			return 0.0;
 		double total = 0.0;
 		for(GRADE grade:grades){
-			total += gradePointsFor(grade);
+			total += gradingStrategy.getGradePointsFor(grade);
 		}
 		return total;
 	}
-	int gradePointsFor(GRADE grade){
+	/*int gradePointsFor(GRADE grade){
 		if (isSenatorsSon){
 			if(grade == GRADE.A) return 4;
 			if (grade == GRADE.B) return 4;
@@ -71,7 +71,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 			if (grade == GRADE.D) return 4;
 			return 3;
 
-		}
+		
 		
 		int points = basicGradePointsFor(grade);
 		if (isHonors){
@@ -80,31 +80,20 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 			}
 		}
 		return 0; //그 외의경우 0 리턴	
-	}
+	}*/
 	
-	private int basicGradePointsFor(GRADE grade){
-		if(grade == GRADE.A) return 4;
-		if (grade == GRADE.B) return 3;
-		if (grade == GRADE.C) return 2;
-		if (grade == GRADE.D) return 1;
-		return 0;
-	}
-	
-	void setHonors(){
-		isHonors = true;
-	}
 	
 	private GradingStrategy gradingStrategy = new RegularGradingStrategy(); // 객체를 생성했을때는 일반학생으로 초기화(?)
 	
 	void setGradingStrategy (GradingStrategy gradingStrategy){ // 인터페이스를 인수로 받는경우는 구현하는클래스 받는다는 의미인듯.
-		this.gradingStrategy = gradingStrategy;
+		this.gradingStrategy = gradingStrategy; // 인수로 받은 구현클래스로 객체를 설정하는거같은데 뭔지모르겠
 	}
 	
-	int gradePointsFor(GRADE grade){
-		return gradingStrategy.getGradePointsFor(grade);
-			
-	}
 	
-
+	private Student createHonorsStudent(){
+		Student student = new Student("a");
+		student.setGradingStrategy(new HonorsGradingStrategy());
+		return student;
+	}
 
 }
