@@ -6,7 +6,7 @@ public class CourseSession implements Comparable<CourseSession>{
 	
 	private String department;
 	private String number;
-	private Date startDate;
+	protected Date startDate;
 	private ArrayList<Student> students = new java.util.ArrayList<Student> (); //???
 	
 	private static int count=0;
@@ -20,7 +20,7 @@ public class CourseSession implements Comparable<CourseSession>{
 	public CourseSession(){
 		
 	}
-	public CourseSession(String department, String number, Date startDate){
+	protected CourseSession(String department, String number, Date startDate){
 		this.department = department;
 		this.number = number;
 		this.startDate = startDate;
@@ -58,16 +58,23 @@ public class CourseSession implements Comparable<CourseSession>{
 		// 책에서는 '현재는 학생의 전체리스트를 가져올 필요가없음으로' 라고한
 	}
 	
-	Date getEndDate(){
+	protected int getSessionEndDate(){ // 아래에 getEndDate 메소드에 시즌 길이값을 위해 생성된 메소드  
+		return 16;
+	}
+	
+	public Date getEndDate(){
 		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.setTime(startDate);
-		int numberOfDays= 16*7-3; //강의의 마지막날이 16주차의 금요일이기때문에 3일을 뺀다 
-		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays); //DAY_OF_YEAR는 import Calendar 클래스의 상수 
+		calendar.setTime(getStartDate());
+		int daysInWeek = 7;
+		int daysFromFridayToMonday = 3;
+		int numberOfDays = getSessionEndDate()*daysInWeek-daysFromFridayToMonday;
 		
+		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
 		return calendar.getTime();
+		
 	}
 
-	Date getStartDate() {
+	protected Date getStartDate() {
 		return startDate;
 	}
 	

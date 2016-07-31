@@ -12,8 +12,20 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	static final String IN_STATE = "CO"; // 지역 관
 	private String state="";
 	public boolean isInState; // 지역관
-	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관
-	public enum GRADE {A, B, C, D, F};
+	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관 //얘는 왜 어레이리스트로 선언한걸
+	
+	public enum GRADE {
+		A(4), B(3), C(2), D(1), F(0);
+		private int points;
+		
+		GRADE(int points){ // 생성자 
+			this.points = points;
+			}
+		
+		int getPoints(){ // 메소드 //생성시 인수로받았던 포인트 리턴  
+			return points;
+			}
+		}
 	 
 	
 	void setState(String state){
@@ -83,7 +95,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	}*/
 	
 	
-	private GradingStrategy gradingStrategy = new RegularGradingStrategy(); // 객체를 생성했을때는 일반학생으로 초기화(?)
+	private GradingStrategy gradingStrategy = new BasicGradingStrategy(); // 객체를 생성했을때는 일반학생으로 초기화(?)
 	
 	void setGradingStrategy (GradingStrategy gradingStrategy){ // 인터페이스를 인수로 받는경우는 구현하는클래스 받는다는 의미인듯.
 		this.gradingStrategy = gradingStrategy; // 인수로 받은 구현클래스로 객체를 설정하는거같은데 뭔지모르겠

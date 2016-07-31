@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 
 public class StudentTest extends TestCase {
 
-	private static final double GRADE_TOLERANCE = 0;
+	private static final double GRADE_TOLERANCE = 0.5;
 
 	public void testCreate() {
 		final String firstStudentName = "ABC"; // 문자열을 그대로 사용했을 경우 의미파악이나 수정이 어려울수있기때문에 상수로 교

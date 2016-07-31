@@ -13,7 +13,7 @@ public class ReportCard {
 	static final String F_MESSAGE = "The Grade is F";
 	
 	
-	private Map<Student.GRADE, String> messages = null;
+	private Map<Student.GRADE, String> messages = null; // 늦은 초기
 	
 	public String getMessage(Student.GRADE grade){
 		return getMessages().get(grade); // 읭
