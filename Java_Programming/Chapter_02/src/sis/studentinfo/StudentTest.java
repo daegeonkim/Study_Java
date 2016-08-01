@@ -8,19 +8,23 @@ public class StudentTest extends TestCase {
 	private static final double GRADE_TOLERANCE = 0.5;
 
 	public void testCreate() {
-		final String firstStudentName = "ABC"; // 문자열을 그대로 사용했을 경우 의미파악이나 수정이 어려울수있기때문에 상수로 교
-		final String secondStudentName = "123"; // 또 중복적으로 사용되기때문에 상수로 교
-		final double GRADE_TOLERANCE= 0.05; //오차 허용범위 
-		
-		Student firstStudent = new Student(firstStudentName); // 교체한 상수값입력
-		
-		assertEquals(firstStudentName, firstStudent.getName()); // 생성한 객체에 직접 getName 할수있기때문에 
-												//getName값을 할당한 지역변수는 제거한다.
-		
-		Student secondStudent = new Student(secondStudentName);
-		assertEquals(secondStudentName, secondStudent.getName());
-		
-		assertEquals(secondStudentName, secondStudent.getName());
+	final String firstStudentName = "Jane Doe";
+	Student firstStudent = new Student(firstStudentName);
+	assertEquals("Jane", firstStudent.getFirstName());
+	assertEquals("Doe", firstStudent.getLastName());
+	assertEquals("", firstStudent.getMiddleName());
+	
+	final String secondStudentName = "Blow";
+	Student secondStudent = new Student(secondStudentName);
+	assertEquals("", secondStudent.getFirstName());
+	assertEquals("Blow", secondStudent.getLastName());
+	assertEquals("", secondStudent.getMiddleName());
+	
+	final String thirdStudentName = "Raymond Douglass Davies";
+	Student thirdStudent = new Student(thirdStudentName );
+	assertEquals("", thirdStudent.getFirstName());
+	assertEquals("Blow", thirdStudent.getLastName());
+	assertEquals("", thirdStudent.getMiddleName());
 	}
 	
 	public void testStudentStatus(){

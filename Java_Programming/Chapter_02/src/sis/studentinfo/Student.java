@@ -1,14 +1,22 @@
 package sis.studentinfo;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.sun.scenario.animation.SplineInterpolator;
 
 import sis.studentinfo.Student.GRADE;
 
 public class Student { //다른 패키지에서 import 해서 참조할수있도록  public 으로 접근제어자를 변경한다.
-	private String	name;
+	
+	private String name;
+	private String firstName = ""; // 미들네임이나,퍼스트네임은 없을수있음으로 빈값을 추가함. 
+	private String middleName = "";
+	private String lastName;
+	
+	
 	private int credits;
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
-	
 	static final String IN_STATE = "CO"; // 지역 관
 	private String state="";
 	public boolean isInState; // 지역관
@@ -33,15 +41,57 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	}
 	
 	
-	public Student(String name) {
-		this.name = name;
+	public Student(String fullName) {
+		this.name = fullName;
 		credits= 0;
+		List<String> nameParts = split(fullName); // 너는 누구냐  팩토리 메소드의 일종이 될것이니 ?
+		setName(nameParts);
 	}
 	
+
 	
+	
+	// 이름관련  
 	public String getName(){
 		return name;
 	}
+	
+	public String getMiddleName() {
+		// TODO Auto-generated method stub
+		return middleName;
+	}
+
+
+	public String getLastName() {
+		// TODO Auto-generated method stub
+		return lastName;
+	}
+
+
+	public String getFirstName() {
+		// TODO Auto-generated method stub
+		return firstName;
+	}
+	
+	private void setName(List<String> nameParts){
+		this.lastName = removeLastName(nameParts);
+		if(nameParts.size() == 1){ 
+			this.lastName = nameParts.get(0);
+		}
+		else {
+			this.middleName = name;
+			this.firstName = removeLastName(nameParts);
+		}
+		
+	}
+	
+	private String removeLastName(List<String> list){ //???
+		if(list.isEmpty())
+			return "";
+		return list.remove(list.size() -1);
+	}
+	
+	
 	
 	boolean isFullTime(){
 		return credits >=CREDITS_REQUIRED_FOR_FULL_TIME;
@@ -75,25 +125,6 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		}
 		return total;
 	}
-	/*int gradePointsFor(GRADE grade){
-		if (isSenatorsSon){
-			if(grade == GRADE.A) return 4;
-			if (grade == GRADE.B) return 4;
-			if (grade == GRADE.C) return 4;
-			if (grade == GRADE.D) return 4;
-			return 3;
-
-		
-		
-		int points = basicGradePointsFor(grade);
-		if (isHonors){
-			if (points > 0){
-				points += 1;
-			}
-		}
-		return 0; //그 외의경우 0 리턴	
-	}*/
-	
 	
 	private GradingStrategy gradingStrategy = new BasicGradingStrategy(); // 객체를 생성했을때는 일반학생으로 초기화(?)
 	
@@ -107,5 +138,5 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		student.setGradingStrategy(new HonorsGradingStrategy());
 		return student;
 	}
-
+	
 }
