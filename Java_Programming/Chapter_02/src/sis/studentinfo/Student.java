@@ -1,7 +1,7 @@
 package sis.studentinfo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Array;
+import java.util.*;
 
 import com.sun.scenario.animation.SplineInterpolator;
 
@@ -21,6 +21,10 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	private String state="";
 	public boolean isInState; // 지역관
 	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관 //얘는 왜 어레이리스트로 선언한걸
+	
+	private List<Integer> charges = new ArrayList<Integer>();
+	
+	
 	
 	public enum GRADE {
 		A(4), B(3), C(2), D(1), F(0);
@@ -46,6 +50,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		credits= 0;
 		List<String> nameParts = split(fullName); // 너는 누구냐  팩토리 메소드의 일종이 될것이니 ?
 		setName(nameParts);
+		
 	}
 	
 
@@ -75,13 +80,15 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	
 	private void setName(List<String> nameParts){
 		this.lastName = removeLastName(nameParts);
-		if(nameParts.size() == 1){ 
-			this.lastName = nameParts.get(0);
+		String name = removeLastName(nameParts);
+		if(nameParts.isEmpty()){
+			this.firstName = name;
 		}
-		else {
+		else{
 			this.middleName = name;
-			this.firstName = removeLastName(nameParts);
+			this. firstName = removeLastName(nameParts);
 		}
+
 		
 	}
 	
@@ -90,6 +97,19 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 			return "";
 		return list.remove(list.size() -1);
 	}
+	
+	private List<String> split(String fullName){
+		List<String> results = new ArrayList<String>();
+		for(String name:fullName.split(" ")){
+			results.add(name);
+		}
+		return results;
+	}
+		
+	
+	
+	
+	
 	
 	
 	
@@ -138,5 +158,21 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		student.setGradingStrategy(new HonorsGradingStrategy());
 		return student;
 	}
+
+
+	public void addCharge(int charge) {
+		charges.add(charge);		
+	}
+	
+	public int totalCharges(){
+		int total = 0;
+		for(int charge : charges){
+			total += charge;
+		}
+		return total;
+	}
+	
+	
+			
 	
 }

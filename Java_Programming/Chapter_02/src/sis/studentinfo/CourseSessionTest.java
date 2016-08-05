@@ -36,6 +36,7 @@ public class CourseSessionTest extends SessionTest{ //강의의 기본 과목정
 	
 	
 	
+	
 }
 	
 	

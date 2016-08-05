@@ -13,6 +13,7 @@ public class AllTest {
 		suite.addTestSuite(StudentTest.class);
 		suite.addTestSuite(HonorsGradingStrategyTest.class);
 		suite.addTestSuite(BasicGradingStrategyTest.class);
+		suite.addTestSuite(SessionTest.class);
 	
 		//$JUnit-END$
 		return suite;

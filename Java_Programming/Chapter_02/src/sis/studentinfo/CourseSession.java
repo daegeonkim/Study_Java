@@ -6,7 +6,7 @@ public class CourseSession extends Session{
 	private static int count;
 	
 
-	protected CourseSession(String department, String number, Date startDate){
+	public CourseSession(String department, String number, Date startDate){
 		super(department, number, startDate);	
 		CourseSession.incrementCount();
 	}
@@ -32,7 +32,7 @@ public class CourseSession extends Session{
 	protected int getSessionLength() {
 		return 16;
 	}
-	
+
 	
 }
 

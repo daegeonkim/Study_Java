@@ -22,9 +22,9 @@ public class StudentTest extends TestCase {
 	
 	final String thirdStudentName = "Raymond Douglass Davies";
 	Student thirdStudent = new Student(thirdStudentName );
-	assertEquals("", thirdStudent.getFirstName());
-	assertEquals("Blow", thirdStudent.getLastName());
-	assertEquals("", thirdStudent.getMiddleName());
+	assertEquals("Raymond", thirdStudent.getFirstName());
+	assertEquals("Davies", thirdStudent.getLastName());
+	assertEquals("Douglass", thirdStudent.getMiddleName());
 	}
 	
 	public void testStudentStatus(){
@@ -76,8 +76,8 @@ public class StudentTest extends TestCase {
 	private Student createHonorsStudent(){ // 전공학생 만드는메소드인드
 		Student student = new Student("A");
 		student.setGradingStrategy(new HonorsGradingStrategy());
-		return student;
-		
+		return student;	
 	}
+		
 }
 	

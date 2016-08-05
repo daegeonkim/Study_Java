@@ -1,7 +1,6 @@
 package sis.studentinfo;
 
 import static sis.studentinfo.Student.GRADE;
-
 import junit.framework.TestCase;
 
 public class BasicGradingStrategyTest extends TestCase{
