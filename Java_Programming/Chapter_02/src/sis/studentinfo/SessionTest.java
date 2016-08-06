@@ -1,6 +1,8 @@
 package sis.studentinfo;
 
 import junit.framework.TestCase;
+
+import java.net.MalformedURLException;
 import java.util.*;
 import static sis.studentinfo.DateUtil.createDate;
 
@@ -119,7 +121,34 @@ abstract public class SessionTest extends TestCase {
 		assertEquals(1099, student.totalCharges());
 	}
 	
+	public void testSessionUrl() throws MalformedURLException{
+		final String url = "http://course.langrsoft.com/cmsc300";
+		session.setUrl(url);
+		assertEquals(url, session.getUrl().toString());
+	}
+	
+	public void testInvaoldSessionUrl(){
+		final String url = "httsp://course.langrsoft.com/cmsc300";
+		try{
+			session.setUrl(url);
+			fail("expected exception due to invaild protocol in URL");
+		}
+		catch(MalformedURLException succcess){
+		}
+	}
+	
+	
+	
+	public void testBadlyFormattedName(){  //  이름이 정해진 음절 이상인경우 예외를 발생하는지 확인하는 테스트 메소드 
+		try{
+			new Student("a b c d");
+			fail("expected exception from 4-part name");
+		}
+		catch(StudentNameFormatException exceptedException){
+			assertEquals("Student name 'a b c d' Contains more than 3'parts",
+					exceptedException.getMessage());
+			
+		}
+	}
 
-	
-	
 }

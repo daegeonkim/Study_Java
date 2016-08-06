@@ -8,7 +8,7 @@ public class Scorer {
 
 	public boolean isVaild(String input) {
 		try{
-			Integer.parseInt(input);
+			Integer.parseInt(input); // 인수를 
 			return true;
 		}
 		catch(NumberFormatException e){

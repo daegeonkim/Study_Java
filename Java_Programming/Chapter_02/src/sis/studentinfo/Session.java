@@ -2,6 +2,10 @@ package sis.studentinfo;
 
 import java.util.*;
 
+import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
+
+import java.net.*;
+
 abstract public class Session implements Comparable<Session>, Iterable<Student> {
 
 	private static int count;
@@ -10,6 +14,9 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 	private Vector<Student> students = new Vector<Student>();//new ArrayList<Student>(); // ????
 	private Date startDate;
 	private int numberOfCredits;
+	
+	private URL url; //  url 관
+	
 	
 	protected Session(String department, String number, Date startDate){ // 생성자 
 		this.department = department;
@@ -115,11 +122,20 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 	public Iterator<Student> iterator(){
 		return students.iterator();
 	}
+
+	public void setUrl(String urlString) throws MalformedURLException{
+		this.url = new URL(urlString);
+		
+	}
+
+	public URL getUrl() {
+		return url;
+	}
 	
 		
 }
 
-		
+
 		
 		
 		

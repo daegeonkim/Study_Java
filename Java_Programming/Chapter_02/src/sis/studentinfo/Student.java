@@ -13,6 +13,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	private String firstName = ""; // 미들네임이나,퍼스트네임은 없을수있음으로 빈값을 추가함. 
 	private String middleName = "";
 	private String lastName;
+	private int maximumNumberOfNameParts = 3; // 학생 이름 음절제한  
 	
 	
 	private int credits;
@@ -49,6 +50,10 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		this.name = fullName;
 		credits= 0;
 		List<String> nameParts = split(fullName); // 너는 누구냐  팩토리 메소드의 일종이 될것이니 ?
+		if(nameParts.size() > maximumNumberOfNameParts){
+			String message = "Student name '"+ fullName+"' Contains more than "+maximumNumberOfNameParts + "'parts";
+			throw new StudentNameFormatException(message);
+		}
 		setName(nameParts);
 		
 	}

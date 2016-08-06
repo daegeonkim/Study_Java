@@ -11,8 +11,8 @@ public class ScorerTest extends TestCase{
 	public void testBadScoreEntered(){
 		Scorer scorer = new Scorer();
 		try{
-			scorer.score("abd");
-			//fail("expected NumberFormatException on bad input");
+			scorer.score("123");
+			fail("expected NumberFormatException on bad input");
 		}
 		catch(NumberFormatException success){
 		}
@@ -20,7 +20,7 @@ public class ScorerTest extends TestCase{
 	
 	public void testIsVaild(){
 		Scorer scorer = new Scorer();
-		assertTrue(scorer.isVaild("75"))
+		assertTrue(scorer.isVaild("75"));
 		assertFalse(scorer.isVaild("ab"));
 	}
 }
