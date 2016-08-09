@@ -1,11 +1,11 @@
 package sis.studentinfo;
 
-import java.sql.Array;
 import java.util.*;
 
-import com.sun.scenario.animation.SplineInterpolator;
+import java.util.logging.*; // 로그 관련 임포트 
+import com.sun.scenario.animation.SplineInterpolator; // 라인세퍼레이터 임포
 
-import sis.studentinfo.Student.GRADE;
+import sis.studentinfo.Student.GRADE; // enum static 임포
 
 public class Student { //다른 패키지에서 import 해서 참조할수있도록  public 으로 접근제어자를 변경한다.
 	
@@ -23,8 +23,12 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	public boolean isInState; // 지역관
 	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관 //얘는 왜 어레이리스트로 선언한걸
 	
+	static int MAX_NAME_PARTS = 3; //  이름 글자수 제한 에러메시지 관련
+	static final String TOO_MANY_NAME_PARTS_MSG = "Student name '%s' Contains more than %d parts"; // 에러메시지 상수
 	private List<Integer> charges = new ArrayList<Integer>();
 	
+	
+	final static Logger logger = Logger.getLogger(Student.class.getName()); 
 	
 	
 	public enum GRADE {
@@ -50,14 +54,20 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		this.name = fullName;
 		credits= 0;
 		List<String> nameParts = split(fullName); // 너는 누구냐  팩토리 메소드의 일종이 될것이니 ?
+		
 		if(nameParts.size() > maximumNumberOfNameParts){
-			String message = "Student name '"+ fullName+"' Contains more than "+maximumNumberOfNameParts + "'parts";
+			String message = String.format(Student.TOO_MANY_NAME_PARTS_MSG, fullName, MAX_NAME_PARTS); //  위에서 선언한 상수화한에러메시지를 가져와서 포멧팅한다.
+			Student.logger.info(message);
 			throw new StudentNameFormatException(message);
 		}
 		setName(nameParts);
-		
 	}
 	
+	
+/*	private void log(String message){
+		Logger logger =  Logger.getLogger(Student.class);
+		logger.info(message);
+	}*/
 
 	
 	

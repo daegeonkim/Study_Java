@@ -18,5 +18,4 @@ public class TryCatchTest extends TestCase{
 			return;
 		}
 	}
-	
 }
