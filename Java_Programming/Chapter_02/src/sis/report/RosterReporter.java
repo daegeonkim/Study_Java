@@ -11,10 +11,10 @@ public class RosterReporter {
 
 	
 	
-	private CourseSession session; //여기서 객체를 생성하고  //private인 이유는 뭘까
+	private Session session; //여기서 객체를 생성하고  //private인 이유는 뭘까
 	
 	
-	RosterReporter(CourseSession session){ // test 클래스에서 인스턴스화 할
+	RosterReporter(Session session){ // test 클래스에서 인스턴스화 할
 		this.session= session; // 이게 뭐하는걸까 ..
 								// test 에서 만든 CourseSession객체를 여기와 연동해주는건가 ??
 	}

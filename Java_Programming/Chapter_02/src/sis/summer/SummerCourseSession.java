@@ -6,12 +6,12 @@ import java.util.*;
 public class SummerCourseSession extends Session {
 
 	public static Session create(Course course, Date startDate){
-		return new SummerCourseSession(course.getDepartment(), course.getNumber(), startDate);	
+		return new SummerCourseSession(course, startDate);	
 	}
 	
 	
-	private SummerCourseSession(String department, String number, Date startDate){ // 생성
-		super(department, number, startDate); // ??? // 인자를 상위 생성자로 넘겨줌. 
+	private SummerCourseSession(Course course, Date startDate){ // 생성
+		super(course.getDepartment(), course.getNumber(), startDate); // ??? // 인자를 상위 생성자로 넘겨줌. 
 	}
 	
 	
