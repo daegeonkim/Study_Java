@@ -152,13 +152,16 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	}
 
 	double getGpa(){
+		Student.logger.fine("begin getGpa "+System.currentTimeMillis());
 		if(grades.isEmpty())
 			return 0.0;
 		double total = 0.0;
 		for(GRADE grade:grades){
 			total += gradingStrategy.getGradePointsFor(grade);
 		}
-		return total;
+		double results = total/grades.size();
+		Student.logger.fine("end getGpa "+ System.currentTimeMillis());
+		return results;
 	}
 	
 	private GradingStrategy gradingStrategy = new BasicGradingStrategy(); // 객체를 생성했을때는 일반학생으로 초기화(?)

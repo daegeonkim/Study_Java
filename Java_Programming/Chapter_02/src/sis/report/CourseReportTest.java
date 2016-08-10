@@ -1,8 +1,8 @@
 package sis.report;
 
 import static sis.report.ReportConstant.NEWLINE;
-import java.util.Date;
-import junit.framework.TestCase;
+import java.util.*;
+import junit.framework.*;
 import sis.studentinfo.*;
 
 /*
@@ -20,14 +20,19 @@ public class CourseReportTest extends TestCase {
 	public void testReprot(){
 		final Date date= new Date();
 		CourseReport report = new CourseReport();
-		report.add(CourseSession.create("ENGL", "101", date));
-		report.add(CourseSession.create("CZEC", "200", date));
-		report.add(CourseSession.create("ITAL", "410", date));
-		report.add(CourseSession.create("CZEC", "220", date));
-		report.add(CourseSession.create("ITAL", "330", date));
+		report.add(create("ENGL", "101", date));
+		report.add(create("CZEC", "200", date));
+		report.add(create("ITAL", "410", date));
+		report.add(create("CZEC", "220", date));
+		report.add(create("ITAL", "330", date));
 		assertEquals("CAZEC 200"+ NEWLINE+"CZEC 200"+ NEWLINE + "ENGL 101"+NEWLINE+
 				"ITAL 330"+ NEWLINE + "ITAL 410"+ NEWLINE, report.text());
 		//assertEquals("CZEC 200"+NEWLINE+"ENGL 101"+NEWLINE+"ITAL 410" +NEWLINE, report.text());
+	}
+	
+	private Session create(String name, String number, Date date){
+		return CourseSession.create(new Course(name, number), date);
+		
 	}
 	
 

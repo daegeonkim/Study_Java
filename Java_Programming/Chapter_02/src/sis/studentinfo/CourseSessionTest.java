@@ -12,27 +12,29 @@ public class CourseSessionTest extends SessionTest{ //강의의 기본 과목정
 
 	public void testCreate(){
 		Date startDate = DateUtil.createDate(2003, 1, 6);
-		Session session = createSession("ENGL", "200", startDate);
+		Session session = createSession(createCourse(), startDate);
 		Date sixteemWeeksOut = createDate(2003, 4, 25);
 		assertEquals(sixteemWeeksOut, session.getEndDate());
 	}	
 
 	public void testCount(){
 		CourseSession.resetCount(); //다른곳에서도 객체가 생성될때마다 클래스변수 +1 되기때문에 이 테스트를 하기위해실행전 0으로 초기화한다 
-		createSession("", "", new Date());
+		createSession(createCourse(), new Date());
 		assertEquals(1, CourseSession.getCount());
-		createSession("", "", new Date());
+		createSession(createCourse(), new Date());
 		assertEquals(2, CourseSession.getCount());
 
 	}
 	
 	@Override
 
-	protected Session createSession(String department, String number, Date startDate) {
-		return CourseSession.create(department, number, startDate);
+	protected Session createSession(Course course, Date startDate) {
+		return CourseSession.create(course, startDate);
 	}
 
-
+	private Course createCourse(){
+		return new Course("ENGL", "101");
+	}
 	
 	
 	

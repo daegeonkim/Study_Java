@@ -24,6 +24,10 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 		this.startDate = startDate;
 	}
 	
+	abstract protected int getSessionLength();
+	
+	
+	
 	@Override
 	public int compareTo(Session that) {
 		int compare = this.getDepartment().compareTo(that.getDepartment());
@@ -65,8 +69,6 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 	public List<Student> getAllStudents(){ // 얘는 뭐하는애지
 		return students;
 	}
-
-	abstract protected int getSessionLength();
 	
 	public Date getEndDate(){
 		GregorianCalendar calendar = new GregorianCalendar();
@@ -78,34 +80,9 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 		return calendar.getTime();
 	}
 
-/*	double averageGpaForPartTimeStudents(){
-		double total = 0.0;
-		int count = 0;
-		
-		for(Student student: students){
-			if(student.isFullTime())
-				continue;
-			count++;
-			total += student.getGpa();
-		}
-		if(count == 0) return 0.0;
-		return total / count;
-	}*/
-	
 	double averageGpaForPartTimeStudents(){
 		double total = 0.0;
 		int count = 0;
-	
-		/*for(Iterator<Student> it = students.iterator();it.hasNext();){  //이터레이터인터페이스를 이용하여 콜렉션의 각 항목 가져오기  
-			Student student = it.next(); //??
-			if(student.isFullTime())
-				continue;
-			count++;
-			total += student.getGpa();
-		}
-		if (count == 0) return 0.0;
-		return total / count;
-	}*/
 
 		for(Enumeration<Student> it = students.elements();it.hasMoreElements();){
 			Student student = it.nextElement(); // 다음자료로포인터를 넘겨줌  

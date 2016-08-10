@@ -11,8 +11,9 @@ public class CourseSession extends Session{
 		CourseSession.incrementCount();
 	}
 	
-	public static CourseSession create(String department, String number, Date startDate){
-		return new CourseSession(department, number, startDate);	
+	public static Session create(Course course, Date startDate){
+		incrementCount();
+		return new CourseSession(course.getDepartment(), course.getNumber(), startDate);	
 	}
 	
 	
