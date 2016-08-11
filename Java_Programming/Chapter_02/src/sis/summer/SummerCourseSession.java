@@ -11,7 +11,7 @@ public class SummerCourseSession extends Session {
 	
 	
 	private SummerCourseSession(Course course, Date startDate){ // 생성
-		super(course.getDepartment(), course.getNumber(), startDate); // ??? // 인자를 상위 생성자로 넘겨줌. 
+		super(course, startDate); // ??? // 인자를 상위 생성자로 넘겨줌. 
 	}
 	
 	

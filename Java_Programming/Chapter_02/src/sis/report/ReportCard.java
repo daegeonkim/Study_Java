@@ -15,11 +15,12 @@ public class ReportCard {
 	
 	private Map<Student.GRADE, String> messages = null; // 늦은 초기
 	
+	
 	public String getMessage(Student.GRADE grade){
 		return getMessages().get(grade); // 읭
 	}
 	
-	private Map<Student.GRADE, String> getMessages(){
+	Map<Student.GRADE, String> getMessages(){
 		if(messages == null){
 			loadMessages();
 		}

@@ -6,8 +6,8 @@ public class CourseSession extends Session{
 	private static int count;
 	
 
-	public CourseSession(Course course, Date startDate){
-		super(course.getDepartment(), course.getNumber(), startDate);	
+	protected CourseSession(Course course, Date startDate){
+		super(course, startDate);	
 	}
 	
 	public static Session create(Course course, Date startDate){

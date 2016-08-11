@@ -15,12 +15,13 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 	private Date startDate;
 	private int numberOfCredits;
 	
+	private Course course;
+	
 	private URL url; //  url 관
 	
 	
-	protected Session(String department, String number, Date startDate){ // 생성자 
-		this.department = department;
-		this.number= number;
+	protected Session(Course course, Date startDate){ // 생성자 
+		this.course = course ; 
 		this.startDate = startDate;
 	}
 	
@@ -42,11 +43,11 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 	}
 	
 	public String getDepartment(){
-		return department;
+		return course.getDepartment();
 	}
 	
 	public String getNumber(){
-		return number;
+		return course.getNumber();
 	}
 	
 	public int getNumberOfStudents(){
