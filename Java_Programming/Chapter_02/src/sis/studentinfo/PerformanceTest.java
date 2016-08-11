@@ -25,4 +25,8 @@ public class PerformanceTest extends TestCase{
 		assertEquals(74.25, performance.average(), tolerance);		
 	}
 	
+	public void testAverageForNonScore(){
+		Performance performance = new Performance();
+		assertEquals(0.0, performance.average());
+	}
 }
