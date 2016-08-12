@@ -102,5 +102,23 @@ public class StudentTest extends TestCase {
 		return message.equals(handler.getMessage());
 	}
 	
+	public void testFlag(){ // 각학생에게 퍼스안에 사는지,세금을 면제받는지, 미성년인지, 문제학생인지를 물어보고 나타는것에 대한 테스트. 
+		Student.student = new Student("a");
+		student.set(Student.Flag.ON_CAMPUS, Student.Flag.TAX_EXEMPT,Student.Flag.MINOR);
+		assertTrue(student.isOn(Student.Flag.ON_CAMPUS));
+		assertTrue(student.isOn(Student.Flag.TAX_EXEMPT));
+		assertTrue(student.isOn(Student.Flag.MINOR));
+		
+		assertFalse(student.isOff(Student.Flag.ON_CAMPUS));
+		assertTrue(student.isOff(Studetnt.Flag.TROUBLEMAKER));
+		
+		stduent.unset(Student.Flag.ON_CAMPUS);
+		assertTrue(student.isOFF(Student.Flag.ON_CAMPUS));
+		assertTrue(student.isOn(Student.Flag.TAX_EXEMPT));
+		assertTrue(student.isOn(Student.Flag.MINOR));
+	}
+	
+	
+	
 }
 	

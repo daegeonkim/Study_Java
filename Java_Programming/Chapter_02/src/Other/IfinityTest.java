@@ -27,8 +27,12 @@ public class IfinityTest extends TestCase{
 		assertEquals(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY / x, tolerance);
 		assertTrue(Float.isNaN(Float.POSITIVE_INFINITY % x));
 		
-		assertTrue(Float.isNaN(Float.POSITIVE_INFINITY));
-	
+		
+		//수치 오버플로
+		
+		byte b = Byte.MAX_VALUE;
+		assertEquals(Byte.MAX_VALUE+1, b+1);
+		System.out.println(Byte.MAX_VALUE);
 	
 	}
 

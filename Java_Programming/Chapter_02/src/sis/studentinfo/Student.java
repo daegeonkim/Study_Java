@@ -27,8 +27,41 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	static final String TOO_MANY_NAME_PARTS_MSG = "Student name '%s' Contains more than %d parts"; // 에러메시지 상수
 	private List<Integer> charges = new ArrayList<Integer>();
 	
+	final static Logger logger = Logger.getLogger(Student.class.getName());  // 로그 보내는 기능
 	
-	final static Logger logger = Logger.getLogger(Student.class.getName()); 
+	////각학생에게 퍼스안에 사는지,세금을 면제받는지, 미성년인지, 문제학생인지를 물어는 내용에 대한 enum 및 메소
+	public enum Flag { 
+		ON_CAMPUS(1), TAX_EXEMPT(2), MINOR(4), TROUBLEMAKER(8);
+	
+		private int mask;
+		
+		Flag(int mask){
+			this.mask = mask;
+		}
+	}
+	
+	private int setting = 0x0;
+	
+	public void set(Flag...flags){
+		for(Flag flag : flags){
+			setting &= ~flag.mask; // 이건 무엇일까 
+		}
+	}
+	
+	public void unset(Flag...flags){
+		for(Flag flag:flags){
+			setting &= ~flag.mask;
+		}
+	}
+	
+	public boolean isOn(Flag flag){
+		return (setting & flag.mask) == flag.mask;
+	}
+	
+	public boolean isOff(Flag flag){
+		return !isOn(flag);
+	}
+	// 여기까지 
 	
 	
 	public enum GRADE {
@@ -62,14 +95,6 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 		}
 		setName(nameParts);
 	}
-	
-	
-/*	private void log(String message){
-		Logger logger =  Logger.getLogger(Student.class);
-		logger.info(message);
-	}*/
-
-	
 	
 	// 이름관련  
 	public String getName(){
