@@ -1,5 +1,7 @@
 package sis.util;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 import junit.framework.*;
 
 public class PasswordGeneratorTest extends TestCase
@@ -13,8 +15,7 @@ public class PasswordGeneratorTest extends TestCase
 		generator.setRandom(new MockRandom("C"));
 		assertEquals("CDEFGHIJ", generator.generatePassword());
 
-//		generator.setRandom(new MockRandom('1'));
-
+		//generator.setRandom(new MockRandom('1')); // 예외 발생확인 테스트
 	}
 
 
