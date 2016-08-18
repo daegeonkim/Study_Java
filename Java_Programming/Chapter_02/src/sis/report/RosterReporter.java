@@ -46,5 +46,21 @@ public class RosterReporter {
 	void writeFooter() throws IOException {
 		writer.write(String.format(ROSTER_REPORT_FOOTER, session.getAllStudents().size()));	
 	}
+
 	
+	
+	public void writeReport(String filename) throws IOException {
+		Writer bufferedWirter = new BufferedWriter(new FileWriter(filename));
+	
+		try{
+			writeReport(bufferedWirter);
+		}
+		finally{
+			bufferedWirter.close();
+		}
+	
+	}
+	//파일이름을 인자로 받아와서 bufferWriter 객채를, 인자로 받은 파일이름 파일을 Writer 로 연다.
+	
+		
 }
