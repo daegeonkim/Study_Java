@@ -6,7 +6,7 @@ import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
 
 import java.net.*;
 
-abstract public class Session implements Comparable<Session>, Iterable<Student> {
+abstract public class Session implements Comparable<Session>, Iterable<Student>, java.io.Serializable {
 
 	private static int count;
 	private String department;
@@ -118,6 +118,11 @@ abstract public class Session implements Comparable<Session>, Iterable<Student> 
 	
 	private void log(Exception e){
 		// 더 뒤에 레슨에서 작성 예
+	}
+
+	public int getNumberOfCredits() {
+
+		return numberOfCredits;
 	}
 		
 }

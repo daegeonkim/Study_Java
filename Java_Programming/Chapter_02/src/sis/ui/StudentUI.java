@@ -19,6 +19,13 @@ public class StudentUI {
 	private BufferedWriter writer;
 	private List<Student> students = new ArrayList<>();
 	
+	//생성자 
+	public StudentUI(){
+		this. reader = new BufferedReader(new InputStreamReader(System.in));
+		this.writer = new BufferedWriter(new OutputStreamWriter(System.out));
+	}
+	
+	
 	public StudentUI(BufferedReader reader, BufferedWriter writer){
 		this.reader = reader;
 		this.writer = writer;

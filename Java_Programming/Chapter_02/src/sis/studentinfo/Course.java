@@ -2,7 +2,7 @@ package sis.studentinfo;
 
 
 
-public class Course {
+public class Course implements java.io.Serializable {
 	String department;
 	 String number;
 	
