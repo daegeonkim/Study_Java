@@ -59,6 +59,7 @@ abstract public class SessionTest extends TestCase {
 	public void testAverageGpaForPartTimeStudents(){
 		session.enroll(createFullTimeStudent());
 		Student partTime1 = new Student("1");
+		
 		partTime1.addGrade(Student.GRADE.A);
 		session.enroll(partTime1);
 		
@@ -66,8 +67,10 @@ abstract public class SessionTest extends TestCase {
 		
 		Student partTime2 = new Student("2");
 		partTime2.addGrade(Student.GRADE.B);
+		System.out.println("B is "+Student.GRADE.B.getPoints());
+		System.out.println("A is "+ Student.GRADE.A.getPoints());
 		session.enroll(partTime2);
-		
+
 		assertEquals(3.5, session.averageGpaForPartTimeStudents());
 	}
 	

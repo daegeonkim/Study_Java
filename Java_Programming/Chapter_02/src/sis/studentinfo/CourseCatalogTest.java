@@ -24,7 +24,7 @@ public class CourseCatalogTest extends TestCase{
 		
 		session2 = CourseSession.create(course2, DateUtil.createDate(1, 17, 2005));
 		session2.setNumberOfCredits(5);
-		//session2.enroll(new Student("A")); //학생이 추가되는 경우 직렬화가 안된다는데 왜 안되는 것일? 
+		session2.enroll(new Student("A")); //학생이 추가되는 경우 직렬화가 안된다는데 왜 안되는 것일? 
 		//session에 student 리스트에 transient 를 하면 직렬화되지않으며 통과횐다는데 그것은또 왜그런것일까.
 		
 		
@@ -35,16 +35,26 @@ public class CourseCatalogTest extends TestCase{
 	}
 	
 	public void testStoreAndLoad() throws Exception{
+		System.out.println(catalog.getSessions().get(1).getAllStudents().get(0).getLastName());
 		final String filename = "CourseCatalogTest.testAdd.txt";
 		catalog.store(filename);
+		
 		catalog.clearAll();
 		assertEquals(0, catalog.getSessions().size());
 		catalog.load(filename);
+		
 		
 		List<Session> sessions = catalog.getSessions();
 		assertEquals(2, sessions.size());
 		assertSession(session1, sessions.get(0));
 		assertSession(session2, sessions.get(1));
+		
+		Session session = sessions.get(1);		
+		assertSession(session2, session);
+		
+		Student student = session.getAllStudents().get(0);
+
+		assertEquals("A", student.getLastName());
 	}
 	
 	private void assertSession(Session expected, Session retrieved){

@@ -21,7 +21,7 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	static final String IN_STATE = "CO"; // 지역 관
 	private String state="";
 	public boolean isInState; // 지역관
-	public static ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관 //얘는 왜 어레이리스트로 선언한걸
+	private ArrayList<GRADE> grades = new ArrayList<GRADE>(); // 학점 평균 계산 관 //얘는 왜 어레이리스트로 선언한걸
 	
 	static int MAX_NAME_PARTS = 3; //  이름 글자수 제한 에러메시지 관련
 	static final String TOO_MANY_NAME_PARTS_MSG = "Student name '%s' Contains more than %d parts"; // 에러메시지 상수
@@ -170,9 +170,8 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	}
 	
 	void addGrade(GRADE grade){
-		grades = new ArrayList<GRADE>(); //계속 배열에 저장되기때문에 test 메소드에서 각 등급별로 점수확인하는거면
+		//grades = new ArrayList<GRADE>(); //계속 배열에 저장되기때문에 test 메소드에서 각 등급별로 점수확인하는거면
 					// 메소드 호출할때마다 초기화되야하는거 아닌가 ???
-		
 		grades.add(grade);
 	}
 
@@ -213,6 +212,11 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 			total += charge;
 		}
 		return total;
+	}
+
+	public static Student findByLastName(String lastName2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

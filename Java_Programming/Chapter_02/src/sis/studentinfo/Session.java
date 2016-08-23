@@ -4,16 +4,30 @@ import java.util.*;
 
 import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
 
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.net.*;
 
 abstract public class Session implements Comparable<Session>, Iterable<Student>, java.io.Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
+	private String name;
 	private static int count;
 	private String department;
 	private String number;
-	private Vector<Student> students = new Vector<Student>();//new ArrayList<Student>(); // ????
+	private transient List<Student> students = new ArrayList<>(); // 제외하는데 왜지 제발 왠지알랴줭 ...
+	// vector 로 선언하고 마무리되었는데 이후 내용진행을위해 ArrayList 로 변경하고 averageGpa 메소드 변경함 / 변경전 메소드주석처리
 	private Date startDate;
 	private int numberOfCredits;
+
+	
+	//private transient String name; // 직렬화 이후 새로운 클래스 정의시 예외발생의 테스트에 대한 필드
+	//  직렬화 이후, 클래스의 내용이 변경(필드가 추가되거나등) 이 있을 경우 직렬화된 이후 클래스 정의를 바꾸면 직렬화된 객체를 읽을때 예외가 발생한다.
+	
 	
 	private Course course;
 	
@@ -85,8 +99,7 @@ abstract public class Session implements Comparable<Session>, Iterable<Student>,
 		double total = 0.0;
 		int count = 0;
 
-		for(Enumeration<Student> it = students.elements();it.hasMoreElements();){
-			Student student = it.nextElement(); // 다음자료로포인터를 넘겨줌  
+		for(Student student : students){
 			if(student.isFullTime()){
 				continue;
 			}
@@ -94,8 +107,34 @@ abstract public class Session implements Comparable<Session>, Iterable<Student>,
 			total += student.getGpa();
 		}
 		if(count ==0) return 0;
+		
+		
 		return total/count;
 	}
+	
+	
+/*	double averageGpaForPartTimeStudents(){ // 변경전 ( students vector 로 선언된 내용에 대한 평균값 구하는 메소드 )
+		double total = 0.0;
+		int count = 0;
+
+		for(Enumeration<Student> it = students.elements();it.hasMoreElements();){
+			Student student = it.nextElement(); // 다음자료로포인터를 넘겨줌  
+			if(student.isFullTime()){
+				continue;
+			}
+			count++;
+			total += student.getGpa();
+			System.out.println(count +"'s is"+total);
+		}
+		if(count ==0) return 0;
+		System.out.println("Average is "+total);
+		
+		
+		return total/count;
+	}*/
+	
+	
+	
 	
 	public Iterator<Student> iterator(){
 		return students.iterator();
@@ -123,8 +162,8 @@ abstract public class Session implements Comparable<Session>, Iterable<Student>,
 	public int getNumberOfCredits() {
 
 		return numberOfCredits;
-	}
-		
+	}	
+	
 }
 
 
@@ -133,3 +172,4 @@ abstract public class Session implements Comparable<Session>, Iterable<Student>,
 		
 		
 		
+

@@ -64,7 +64,7 @@ public class StudentTest extends TestCase {
 		student.addGrade(Student.GRADE.B);
 		assertGpa(student, 3.5);
 		student.addGrade(Student.GRADE.C);
-		assertGpa(student, 3.0);
+		assertGpa(student, 3.0);		
 		student.addGrade(Student.GRADE.D);
 		assertGpa(student, 2.5);
 		student.addGrade(Student.GRADE.F);
@@ -98,7 +98,7 @@ public class StudentTest extends TestCase {
 			}
 		}
 	
-	private boolean wasLogged(String message, TestHandler handler){
+/*	private boolean wasLogged(String message, TestHandler handler){
 		return message.equals(handler.getMessage());
 	}
 	
@@ -116,9 +116,7 @@ public class StudentTest extends TestCase {
 		assertTrue(student.isOFF(Student.Flag.ON_CAMPUS));
 		assertTrue(student.isOn(Student.Flag.TAX_EXEMPT));
 		assertTrue(student.isOn(Student.Flag.MINOR));
-	}
-	
-	
+	}*/
 	
 }
 	
