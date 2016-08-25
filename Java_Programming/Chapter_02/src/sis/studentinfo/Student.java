@@ -15,6 +15,8 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	private String lastName;
 	private int maximumNumberOfNameParts = 3; // 학생 이름 음절제한  
 	
+	private String id;
+	private int idNumber;
 	
 	private int credits;
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
@@ -94,6 +96,8 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 			throw new StudentNameFormatException(message);
 		}
 		setName(nameParts);
+		idNumber++;
+		id = String.valueOf(idNumber);
 	}
 	
 	// 이름관련  
@@ -217,6 +221,22 @@ public class Student { //다른 패키지에서 import 해서 참조할수있도
 	public static Student findByLastName(String lastName2) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	
+	
+	//문제있는 부분 구현  
+	
+	
+	
+	public void setId(String id) {
+		// TODO Auto-generated method stub
+		this.id = id ;
+	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 	
 	
