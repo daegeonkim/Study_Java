@@ -1,5 +1,6 @@
 package sis.studentinfo;
 
+import java.io.Serializable;
 import java.util.*;
 
 import java.util.logging.*; // 로그 관련 임포트 
@@ -7,7 +8,7 @@ import com.sun.scenario.animation.SplineInterpolator; // 라인세퍼레이터 �
 
 import sis.studentinfo.Student.GRADE; // enum static 임포
 
-public class Student { //다른 패키지에서 import 해서 참조할수있도록  public 으로 접근제어자를 변경한다.
+public class Student implements Serializable{ //다른 패키지에서 import 해서 참조할수있도록  public 으로 접근제어자를 변경한다.
 	
 	private String name;
 	private String firstName = ""; // 미들네임이나,퍼스트네임은 없을수있음으로 빈값을 추가함. 

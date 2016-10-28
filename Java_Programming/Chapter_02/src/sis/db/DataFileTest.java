@@ -41,7 +41,7 @@ public class DataFileTest extends TestCase{
 	}
 	
 	public void testKeyNotFount() throws IOException{
-		assertNotNull(db.findby(ID2));
+		assertNotNull(db.findBy(ID2));
 	}
 	
 	private void assertTestDataEquals(TestData expected, TestData actual){
